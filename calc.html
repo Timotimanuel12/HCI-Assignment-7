@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-3.7.1.min.js"></script>
+    <input type="text" id="num1">
+    <input type="text" id="num2"><br>
+
+    <button id="add">+</button>
+    <button id="minus">-</button>
+    <button id="times">×</button>
+    <button id="divide">÷</button><br><br>
+
+    <div id="result">answer: </div>
+
+    <script>
+        $(document).ready(function() {
+            function calculate(operation) {
+                let num1 = parseFloat($("#num1").val());
+                let num2 = parseFloat($("#num2").val());
+                let result;
+
+                if (isNaN(num1) || isNaN(num2)) {
+                    result = "Please enter valid numbers!";
+                } else {
+                    switch (operation) {
+                        case 'add':
+                            result = num1 + num2;
+                            break;
+                        case 'minus':
+                            result = num1 - num2;
+                            break;
+                        case 'times':
+                            result = num1 * num2;
+                            break;
+                        case 'divide':
+                            result = num2 !== 0 ? num1 / num2 : "Undefined";
+                            break;
+                    }
+                }
+
+                $("#result").text("answer: " + result);
+            }
+
+            $("#add").click(function() { calculate('add'); });
+            $("#minus").click(function() { calculate('minus'); });
+            $("#times").click(function() { calculate('times'); });
+            $("#divide").click(function() { calculate('divide'); });
+        });
+    </script>
+    
+</body>
+</html>
